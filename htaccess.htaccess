@@ -1,0 +1,104 @@
+#
+# Kaspir created this file for security purposes. MAKE SURE YOU alter the .htaccess in the /admin/ folder ALSO.
+#
+# Created Oct. 2016, Updated last: Sept 2017
+
+# Turn On Engine, must be turned on, and only once.
+RewriteEngine On
+RewriteBase /
+
+### BASIC OPTIONS ###### BASIC OPTIONS ###### BASIC OPTIONS ###### BASIC OPTIONS ###### BASIC OPTIONS ###
+
+# Set Server TimeZone to EST
+SetEnv America/New_York
+
+# Load our php.ini file, php server settings. Full path required. 
+SetEnv PHPRC /home/SERVERNAME/public_html/phaos/php.ini
+
+# Load 7.1 PHP version support.
+AddHandler application/x-httpd-php71 .php .php5 .php4 .php3
+
+# Disable file/directory browsing
+Options All -Indexes
+
+# Required for auto_version() in config.php for stylesheet force client .css refresh.
+RewriteRule ^(.*)\.[\d]{10}\.(css|js)$ $1.$2 [L]
+
+# Custom Error Pages
+ErrorDocument 400 http://phaos.example.com/400.html
+ErrorDocument 401 http://phaos.example.com/401.html
+ErrorDocument 403 http://phaos.example.com/403.html
+ErrorDocument 404 http://phaos.example.com/404.html
+ErrorDocument 500 http://phaos.example.com/500.html
+
+# "Down for Maintenance" page (a custom page named: maintenance.html that will be shown for all requests)
+# To activate maintenance.html, create a blank file named: maintenance.enable
+# Deactivate by simply deleting the blank file maintenance.enable. Renaming it works too!
+<IfModule mod_rewrite.c>
+# Use your own IP address below, so that you may access while you maintenance! Use: http://www.whatismypublicip.com/
+RewriteCond %{REMOTE_ADDR} !^123\.123\.123\.123
+RewriteCond %{REMOTE_ADDR} !^123\.123\.123\.123
+RewriteCond %{DOCUMENT_ROOT}/maintenance.html -f
+RewriteCond %{DOCUMENT_ROOT}/maintenance.enable -f
+RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+RewriteRule ^.*$ /maintenance.html [R=503,L]
+ErrorDocument 503 /maintenance.html
+#Header Set Cache-Control "max-age=0, no-store"
+</IfModule>
+
+### SECURITY ###### SECURITY ###### SECURITY ###### 
+
+# Forces HTTPS when http is requested.
+#RewriteCond %{HTTPS} !=on
+#RewriteRule .* https://phaos.example.com/%{REQUEST_URI} [R,L]
+
+## IMPORTANT! HIGH SECURITY! Rewrites requests for specified files to a 404, instead of a 403. 
+## DO NOT CHANGE THIS! (FOOLS hackers into believing the file doesn't exist and blocks access!)
+## Some of these files hold your database login/pass info! DO NOT CHANGE THIS!
+<IfModule mod_rewrite.c>
+# Specified files to rewrite 403 to 404 and fool requester.
+RewriteRule (?:config|_settings|cPhpBB)\.(?:php|cs) - [R=404,NC,L]
+# These requested file extentions, get a 403 error, a forbidden.
+RewriteRule \.(?:bat|bak|cmd|dist|exe|fla|inc|ini|log|js|psd|c?sh|sql|rar|txt|zip|htaccess|htpasswd)$ - [NC,F]
+</IfModule>
+
+# Block access to stubborn PHP ERROR LOG file with no file extention.
+<files php_errorlog*.*>
+order allow,deny
+deny from all
+</files>
+
+### SPEED OPTIMIZATIONS ###### SPEED OPTIMIZATIONS ###### 
+
+# Optimize client load speeds with GZip Compression!
+# Compress HTML, CSS, JavaScript, Text, XML and fonts
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+AddOutputFilterByType DEFLATE application/x-font
+AddOutputFilterByType DEFLATE application/x-font-opentype
+AddOutputFilterByType DEFLATE application/x-font-otf
+AddOutputFilterByType DEFLATE application/x-font-truetype
+AddOutputFilterByType DEFLATE application/x-font-ttf
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE font/opentype
+AddOutputFilterByType DEFLATE font/otf
+AddOutputFilterByType DEFLATE font/ttf
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE image/x-icon
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/javascript
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/xml
+ 
+# Remove browser bugs only needed for really old browsers
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+Header append Vary User-Agent
+</IfModule>
+
