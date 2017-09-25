@@ -1,0 +1,36 @@
+/* --------------------------------------------------------------
+	$Icons
+-------------------------------------------------------------- */
+
+/* Icon images & boxes
+---------------------------------------- */
+.clanicon {
+	padding:2px 2px 2px 8px;
+}
+
+.icon {
+	margin:1px;
+    border: solid 1px #006600;
+	border-radius:4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+    transition: all 300ms;
+}
+
+.icon:hover,
+.icon:focus {
+	border: solid 1px #66ff66;
+    -webkit-transition-duration:0.5s;
+       -moz-transition-duration:0.5s;
+            transition-duration:0.5s;
+}
+
+.help {cursor: help;}
+
+.sideicon {
+	display: inline-block;
+	width: 22px;
+	height: auto;
+    vertical-align: middle;
+	padding: 0 4px;
+}

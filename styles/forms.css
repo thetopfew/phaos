@@ -1,0 +1,138 @@
+/* General Form Styles
+---------------------------------------- */
+input {
+	background: #000000 url(../images/input_bg.jpg);
+	background-size: 100% 100%;
+	border: solid 1px #006600;
+	font-weight: bold;
+	vertical-align: middle;
+}
+
+select {
+	font-weight: bold;
+	background-color: #000000;
+	border: solid 1px #006600;
+	cursor: pointer; cursor: hand;
+}
+textarea {
+	font-weight: bold;
+	background-color: #000000;
+	border: solid 1px #006600;
+}
+
+
+/* Definition list layout for forms
+---------------------------------------- 
+fieldset dl {
+	padding: 4px 0;
+}
+
+fieldset dt {
+	float: left;
+	width: 40%;
+	text-align: left;
+	display: block;
+}
+
+fieldset dd {
+	margin-left: 41%;
+	vertical-align: top;
+	margin-bottom: 3px;
+}
+*/
+
+/* Form elements
+---------------------------------------- 
+dt label {
+	font-weight: bold;
+	text-align: left;
+}
+
+dd label {
+	white-space: nowrap;
+}
+
+dd input, dd textarea {
+	margin-right: 3px;
+}
+
+dd select {
+	width: auto;
+}
+
+dd select[multiple] {
+	width: 100%;
+}
+
+dd textarea {
+	width: 85%;
+}
+*/
+
+
+/* Emoticons panel
+---------------------------------------- */
+
+
+/* Input field styles
+---------------------------------------- */
+
+
+/* Button styles
+---------------------------------------- */
+.stat-button {
+	cursor: pointer; cursor: hand;
+	margin: 0;
+}
+
+.button {
+	display: inline-block;
+	margin: 4px;
+	padding: 2px 4px;
+	font-family: "Open Sans", "Droid Sans", Verdana, Arial, Helvetica;
+	text-align: center;
+	white-space: nowrap;
+	-ms-touch-action: manipulation;
+	    touch-action: manipulation;
+	cursor: pointer; cursor: hand;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+	border-radius:2px;
+		-webkit-border-radius: 2px;
+		-moz-border-radius: 2px;
+}
+
+/* Hover & Focus states */
+.button:focus,
+.button:hover {
+	color: #00FF7F;
+ 	text-decoration: none;
+ 	outline: none;
+}
+
+
+/* Browser-specific tweaks
+---------------------------------------- */
+button::-moz-focus-inner {
+	padding: 0;
+	border: 0
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #bfbfbf;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #bfbfbf;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #bfbfbf;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #bfbfbf;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: #bfbfbf;
+}

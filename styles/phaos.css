@@ -1,0 +1,277 @@
+/** World of Phaos, Style Sheet
+--------------------------------------------------------------
+	Style version: 		2.0
+	Original author:	kaspir
+-------------------------------------------------------------- */
+@import url("normalize.css");
+@import url("base.css");
+@import url("forms.css");
+@import url("icons.css");
+
+@import url("responsive.css");
+
+
+/* USE LATER FOR MOBILE FONT
+whatever {
+  font-family: 'Droid Sans', sans-serif;
+}
+*/
+
+/* Possibly use this font later for quests! */
+@font-face {
+  font-family: 'Phaos';
+  src: url('fonts/Phaos.ttf')  format('truetype'); /* Safari, Android, iOS */
+}
+
+
+/* Screen Section Layout
+---------------------------------------- */
+#wrap {
+	width:100%;
+	height:auto;
+}
+#logo {}
+#side_bar {float:left;width:18%;}
+#header_menu {float:center;display:inline-block;width:57.5%;}
+#right_side {float:right;display:inline-block;width:24%;height:400px;}
+#page_body {display:inline-block;float:center;width:56%;margin:10px;}
+
+/* Utilities */
+#actionbar {min-height:26px;text-align:none;}
+#page-center {position: fixed; top: 50%; left: 50%; width:100%; height:auto; transform: translate(-50%, -50%); float: center; text-align: center;}
+img#current_appearance {margin:4px;width:50px;height:auto;} /* Character Image Selection */
+
+
+/* Custom Classes, work in progress..
+---------------------------------------- */
+.inline {display:inline-block;}
+
+.big {font-size:120%;}
+.small {font-size:80%;}
+.top {vertical-align: top;}
+.middle {vertical-align: middle;}
+.bottom {vertical-align: bottom;}
+.left {float: left; text-align: left;}
+.center {float: center; text-align: center;}
+.right {float: right; text-align: right;}
+.b {font-weight: bold;}
+.i {font-style: italic;}
+.u {text-decoration: underline;}
+
+.pink {color: pink;}
+.green {color: #00b300;}
+.red {color:#FF0000;}
+.gold {color:#FFD700;}
+.gold:hover {
+	-webkit-stroke-width: 4.4px;
+	-webkit-stroke-color: #FFF;
+	-webkit-fill-color: #FFF;
+	text-shadow: 1px 0px 14px #ffe866;
+}
+.bgcolor {margin:4px 0;border:solid 1px #FFF;background:#006600;}
+.graybg {background:#141414;}
+.msgbox {
+	display: inline-block;
+	white-space: initial;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	padding: 5px;
+	margin: 10px;
+	background-color: #000;
+	border: solid 1px #006600;
+	border-radius: 4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+}
+
+.quartersize {width:25%;}
+.halfsize {width:50%;}
+.fullsize {width:100%;}
+
+/*
+.full { width: 95%; }
+.medium { width: 50%;}
+.narrow { width: 25%;}
+.tiny { width: 10%;}
+*/
+
+
+/* AUP.php */
+#login-box {
+	background: url(../images/scroll.png) no-repeat;
+	background-position: center; 
+	width: 100%;
+	height: 315px;
+}
+
+#user-login, #user-pass  {
+	color: #000;
+	text-shadow: none;
+}
+
+/* BANK.php */
+
+/* CHARACTER.php */
+
+
+/* CLAN_JOIN.php */
+
+
+/* CLAN_HOME.php */
+#clanlogo {
+	padding:10px 0;
+	width:28px;
+	height:auto;
+}
+#clanbanner {
+	width:100%;
+	height:auto;
+}
+
+
+/* CLAN_LEADER.php */
+#button-box {
+	text-align:center;
+	font-weight:bold;
+	color: pink;
+	border: solid 1px #006600;
+	border-radius:4px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	background: #333333;
+	width:20%;
+	padding:5px 15px;
+	margin:10px;
+}
+
+
+/* COMBAT.php */
+img.comb-mob {
+	height:80px;
+	cursor: pointer; cursor: hand;
+}
+img.comb-mob:hover {
+	border: solid 1px transparent;
+}
+
+meter#hp-bar {
+	/* Reset the default appearance 
+	-webkit-appearance: none; removed to fix google chrome! */
+	-moz-appearance: none;
+	appearance: none;
+}
+
+meter#hp-bar::-webkit-meter-bar {
+	background: #ededed;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+	border-radius: 3px;
+}
+
+meter#hp-bar::-webkit-meter-optimum-value {
+	background: #00FF00; /* Green */
+	border-radius: 1px;
+}
+
+meter#hp-bar::-webkit-meter-suboptimum-value {
+	background: #FFDB1A; /* Yellow */
+	border-radius: 1px;
+}
+
+meter#hp-bar::-webkit-meter-even-less-good-value {
+	background: #ff0000; /* Red */
+    border-radius: 1px;
+}
+
+meter#hp-bar {
+    /* For Firefox */
+    background: #ededed;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset;
+    border-radius: 3px;
+}
+
+meter#hp-bar::-moz-meter-bar {
+	border-radius: 3px;
+}
+
+meter#hp-bar:-moz-meter-optimum::-moz-meter-bar {
+	/*background: #00FF00;  Green */
+}
+
+meter#hp-bar:-moz-meter-sub-optimum::-moz-meter-bar {
+	/*background: #FFDB1A;  Yellow */
+}
+
+meter#hp-bar:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+	/*background: #ff0000;  Red */
+}
+
+
+/* PLAYER_INFO.php */
+.thumb-icon {
+	margin: 2px;
+}
+.thumb-icon:hover {
+	filter: brightness(125%);
+	-webkit-filter: brightness(125%); /* Safari 6.0 - 9.0 */
+}
+
+
+/* SIDE_BAR.php */
+#charnameside a {
+	display: inline-block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 16px;
+	text-shadow: 1px 1px black;
+	padding-bottom: 6px;
+}
+
+#statspic {
+	width: 50px;
+	height: auto;
+}
+
+meter#lvl-bar {
+	height:8px;
+	vertical-align:middle;
+}
+
+/* RIGHT_SIDE.php */
+
+
+
+/* TRAVEL.php */
+
+
+
+/* HEADER.php */
+
+
+
+/* FOOTER.php */
+#trailermsg {
+	display:inline-block;
+	width:56%;
+	float:center;
+	padding:25px 50px;
+	/*background: #000;
+	background: rgba(0, 0, 0, 0.5);*/
+}
+
+
+
+/* TOWN.php & SHOPS 
+img.goldpointsicon {
+	padding: 10px 0 0 3px;
+	max-width: 30px;
+}
+#info {
+	overflow:auto;
+	height:180px;
+	z-Index:20;
+}*/
+
+/* View_Uploads.php */
+img#clan_image {
+	border:solid 1px #FFF;
+}

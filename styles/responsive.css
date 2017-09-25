@@ -1,0 +1,95 @@
+/* Responsive Design
+---------------------------------------- */
+
+@media screen and (orientation:portrait) {
+	#wrap {
+		-ms-transform: rotate(90deg); /* IE 9 */
+		-webkit-transform: rotate(90deg); /* Chrome, Safari, Opera */
+		transform: rotate(90deg);
+		overflow: scroll;
+	}
+}
+
+@media screen and (orientation:landscape) {
+	#logo {}
+	#side_bar {float:left;width:25%;}
+	#header_menu {float:center;display:inline-block;width:74%;}
+	#page_body {display:inline-block;float:right;width:74%;margin:10px;}
+}
+
+@media (max-width: 320px) {
+	#wrap {
+		width: 320px;
+		height: auto;
+	}
+}
+
+@media (max-width: 350px) {
+	#wrap {
+		width:350px;
+		height: auto;
+	}
+}
+
+@media (max-width: 430px) {
+	#wrap {
+		width:430px;
+		height: auto;
+	}
+}
+
+@media (max-width: 500px) {
+	#wrap {
+		width:500px;
+		height: auto;
+	}
+}
+
+@media (max-width: 550px) {
+	#wrap {
+		width:550px;
+		height: auto;
+	}
+}
+
+@media (max-width: 700px) {
+	#wrap {
+		width:700px;
+		height: auto;
+	}
+	.responsive-hide { display: none !important; }
+	.responsive-show { display: block !important; }
+	.responsive-show-inline { display: inline !important; }
+	.responsive-show-inline-block { display: inline-block !important; }
+
+	/* Content wrappers
+	----------------------------------------
+	html {
+		height: auto;
+	}
+
+	body {
+		padding: 0;
+	}
+	*/
+}
+
+@media (min-width: 700px) {
+	
+}
+
+@media (min-width: 850px) {
+	
+}
+
+@media (max-width: 850px) {
+	
+}
+
+@media (min-width: 701px) and (max-width: 950px) {
+	#wrap {
+		width:950px;
+		height: auto;
+	}
+}
+
