@@ -1,7 +1,7 @@
 #
 # Kaspir created this file for security purposes. MAKE SURE YOU alter the .htaccess in the /admin/ folder ALSO.
 #
-# Created Oct. 2016, Updated last: Sept 2017
+# Created Oct. 2016, Updated last: Oct 2017
 
 # Turn On Engine, must be turned on, and only once.
 RewriteEngine On
@@ -13,7 +13,7 @@ RewriteBase /
 SetEnv America/New_York
 
 # Load our php.ini file, php server settings. Full path required. 
-SetEnv PHPRC /home/SERVERNAME/public_html/phaos/php.ini
+SetEnv PHPRC /home/YOURSERVERPATH/public_html/phaos/php.ini
 
 # Load 7.1 PHP version support.
 AddHandler application/x-httpd-php71 .php .php5 .php4 .php3
@@ -26,14 +26,14 @@ RewriteRule ^(.*)\.[\d]{10}\.(css|js)$ $1.$2 [L]
 
 # Custom Error Pages
 ErrorDocument 400 http://phaos.example.com/400.html
-ErrorDocument 401 http://phaos.example.com/401.html
-ErrorDocument 403 http://phaos.example.com/403.html
-ErrorDocument 404 http://phaos.example.com/404.html
-ErrorDocument 500 http://phaos.example.com/500.html
+ErrorDocument 401 http://www.example.com/401.html
+ErrorDocument 403 http://www.example.com/phaos/403.html
+ErrorDocument 404 http://you.get.it/404.html
+ErrorDocument 500 https://www.example.com/phaos/500.html
 
 # "Down for Maintenance" page (a custom page named: maintenance.html that will be shown for all requests)
 # To activate maintenance.html, create a blank file named: maintenance.enable
-# Deactivate by simply deleting the blank file maintenance.enable. Renaming it works too!
+# Deactivate by simply renaming the blank file maintenance.enable --> maintenance.disable 
 <IfModule mod_rewrite.c>
 # Use your own IP address below, so that you may access while you maintenance! Use: http://www.whatismypublicip.com/
 RewriteCond %{REMOTE_ADDR} !^123\.123\.123\.123
@@ -43,21 +43,22 @@ RewriteCond %{DOCUMENT_ROOT}/maintenance.enable -f
 RewriteCond %{SCRIPT_FILENAME} !maintenance.html
 RewriteRule ^.*$ /maintenance.html [R=503,L]
 ErrorDocument 503 /maintenance.html
-#Header Set Cache-Control "max-age=0, no-store"
+Header Set Cache-Control "max-age=0, no-store"
 </IfModule>
 
 ### SECURITY ###### SECURITY ###### SECURITY ###### 
 
-# Forces HTTPS when http is requested.
+# Forces HTTPS when http is requested. Remove the # twice below to activate.
 #RewriteCond %{HTTPS} !=on
-#RewriteRule .* https://phaos.example.com/%{REQUEST_URI} [R,L]
+#RewriteRule .* https://www.example.com/%{REQUEST_URI} [R,L]
 
-## IMPORTANT! HIGH SECURITY! Rewrites requests for specified files to a 404, instead of a 403. 
-## DO NOT CHANGE THIS! (FOOLS hackers into believing the file doesn't exist and blocks access!)
-## Some of these files hold your database login/pass info! DO NOT CHANGE THIS!
+## IMPORTANT SECURITY ## Rewrites requests for specified files to a 404, instead of a 403. 
+## DO NOT CHANGE THIS! (FOOLS attackers into believing the file doesn't exist and blocks access!)
+## Some of these files hold your database login/pass info! 
+## DO NOT CHANGE THIS!
 <IfModule mod_rewrite.c>
 # Specified files to rewrite 403 to 404 and fool requester.
-RewriteRule (?:config|_settings|cPhpBB)\.(?:php|cs) - [R=404,NC,L]
+RewriteRule (?:config|_settings)\.(?:php) - [R=404,NC,L]
 # These requested file extentions, get a 403 error, a forbidden.
 RewriteRule \.(?:bat|bak|cmd|dist|exe|fla|inc|ini|log|js|psd|c?sh|sql|rar|txt|zip|htaccess|htpasswd)$ - [NC,F]
 </IfModule>
